@@ -44,7 +44,8 @@ void s21_remove_matrix(matrix_t *A) {
 }
 
 int s21_eq_matrix(matrix_t *A, matrix_t *B) {
-    if (A == NULL || B == NULL || A->matrix == NULL || B->matrix == NULL) return FAILURE;
+    if (A == NULL || B == NULL || 
+        A->matrix == NULL || B->matrix == NULL) return FAILURE;
     
     if (A->columns!=B->columns || A->rows!=B->rows)return 2;
     
@@ -55,3 +56,40 @@ int s21_eq_matrix(matrix_t *A, matrix_t *B) {
     }
     return SUCCESS;
 }
+
+int s21_sum_matrix(matrix_t *A, matrix_t *B, matrix_t *result) {
+    if (A == NULL || B == NULL || 
+        A->matrix == NULL || B->matrix == NULL) return 1;
+    
+    if (A->columns!=B->columns || A->rows!=B->rows)return 2;
+    
+    if (s21_create_matrix(A->rows, A->columns, result)) {
+        return 1;
+    }
+
+    for (int i = 0; i<A->columns; i++) {
+        for (int j = 0; j<A->rows; j++){
+            result->matrix[i][j] = A->matrix[i][j]+B->matrix[i][j];
+        }
+    }
+    return 0;
+}
+
+int s21_sub_matrix(matrix_t *A, matrix_t *B, matrix_t *result) {
+    if (A == NULL || B == NULL || 
+        A->matrix == NULL || B->matrix == NULL) return 1;
+    
+    if (A->columns!=B->columns || A->rows!=B->rows)return 2;
+    
+    if (s21_create_matrix(A->rows, A->columns, result)) {
+        return 1;
+    }
+
+    for (int i = 0; i<A->columns; i++) {
+        for (int j = 0; j<A->rows; j++){
+            result->matrix[i][j] = A->matrix[i][j]-B->matrix[i][j];
+        }
+    }
+    return 0;
+}
+

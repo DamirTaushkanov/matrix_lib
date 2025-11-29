@@ -7,4 +7,4 @@ coverage.info
 coverage_report
 *.gcda
 *.gcno
-.vscod
+.vscode/
