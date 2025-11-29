@@ -1,0 +1,10 @@
+test_exec
+s21_matrix.a
+1.c
+1
+
+coverage.info
+coverage_report
+*.gcda
+*.gcno
+.vscod
